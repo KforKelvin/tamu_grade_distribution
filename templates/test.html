@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/html">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Class search</title>
+    <link rel="stylesheet" href="/static/styles.css">
+</head>
+
+<!-- connects to def table() at app.py -->
+{#<form method="post">#}
+{#    <button type="submit" name="action1" value="action1"> filter by GPA </button>#}
+{#    <button type="submit" name="action2" value="filter by name">filter by name</button>#}
+{#    <button type="submit" name="action3" value="filter by Date">fiter by Date</button>#}
+{#</form>#}
+
+<!-- dynamically generate the table, where cur() fetches all the lines from backend postgresql -->
+<body>
+
+
+
+<table class="table">
+  <tr class="table_header">
+      {% for header in headings %}
+      <th class="table_cell" > {{header}}</th>
+      {%endfor%}
+  </tr>
+<!-- data is store by the fetching variable in app.py, it's basically a 2D array  -->
+  {% for row in data%}
+  <tr class="table_row">
+      {% for cell in row%}
+         <td class="table_cell" >{{cell}}</td>
+      {%endfor%}
+
+  </tr>
+  {%endfor%}
+
+</table>
+
+</body>
+</html>

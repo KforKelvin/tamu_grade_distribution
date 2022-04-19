@@ -1,0 +1,81 @@
+<!-- inhere from the base.html -->
+{% extends "base.html" %}
+<!-- this route/html page is to collect the information that users enter -->
+<!-- information such as department's name, course number, and professors' name will be collected-->
+{% block content %}
+<h3>Class Info Searching:</h3>
+
+    <p><font size="-1">
+        this search will provide information a specific course such as: GPA, % of A, % of B,
+        Professor who teach the class,and Semester. course number must be between 100 and 500,
+        and make sure the department you enter exist.
+    </font></p>
+
+<form action="" method="post" novalidate>
+     {{ form.hidden_tag() }}
+    <!--this part is for class info search-->
+    <p>
+        {{ form.department.label }}
+        (ex: csce or CSCE)
+        {{ form.department(size=32) }}
+
+        {{ form.course_number.label }}
+        (ex: 121)
+        {{ form.course_number(size=32) }}
+
+        {{form.submit()}}
+    </p>
+</form>
+
+
+    <br><br>
+<h3>Department Info Searching:</h3>
+    <p><font size="-1">
+        this search will provide information of a department such as office location, phone number, and department email.
+    </font></p>
+    <!-- this part is for Department info search -->
+    <form action="" method="post" novalidate>
+        {{ form.hidden_tag() }}
+       <!--this part is for department info search-->
+       <p>
+           {{ form.d_name.label }}
+           (ex: csce or CSCE)
+           {{ form.d_name(size=32) }}
+   
+           {{form.submit()}}
+       </p>
+   </form>
+
+
+    <!-- this part is for Professor info search -->
+    <br><br>
+    <h3>Professor Info Searching:</h3>
+        <p><font size="-1">
+        this search will provide the rate my professor link to a professor, and the course he or she teaches.
+    </font></p>
+
+    <form action="" method="post" novalidate>
+        {{ form.hidden_tag() }}
+       <!--this part is for professor info search-->
+       <p>
+           {{ form.p_name.label }}
+           (ex: RITCHEY P)
+           {{ form.p_name(size=32) }}
+   
+           {{form.submit()}}
+       </p>
+   </form>
+
+
+<!-- error handling feature is not yet complete yet -->
+{% with messages = get_flashed_messages() %}
+<!--{% if messages %}-->
+<ul>
+    {% for message in messages %}
+    <li>{{ message }}</li>
+    {% endfor %}
+</ul>
+<!--{% endif %}-->
+{% endwith %}
+
+{% endblock %}
