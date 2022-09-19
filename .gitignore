@@ -1,4 +1,4 @@
-/env
+/venv
 /myproject
 /.idea
 app2.py
